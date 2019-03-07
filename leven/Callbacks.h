@@ -21,6 +21,8 @@ typedef std::function<void(int sockfd,
                             const InetAddress& local,
                             const InetAddress& peer)> NewConnectionCallBack;
 
+typedef std::function<void()> TimerCallBack;
+
 } // namespace leven
 
 #endif //LEVEN_CALLBACKS_H

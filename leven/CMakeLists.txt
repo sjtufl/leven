@@ -6,6 +6,9 @@ set(SOURCE_FILES
         Logger.c Logger.h
         ThreadPool.cc ThreadPool.h
         Buffer.cc Buffer.h
+        Channel.cc Channel.h
+        EventLoop.cc EventLoop.h
+        Epoller.cc Epoller.h
 #        TcpConnection.cc TcpConnection.h
         Callbacks.h
         )
@@ -24,5 +27,7 @@ set(HEADERS
         ThreadPool.h
         Buffer.h
 #        TcpConnection.h
+        Channel.h
+        EventLoop.h
         )
 install(FILES ${HEADERS} DESTINATION include)

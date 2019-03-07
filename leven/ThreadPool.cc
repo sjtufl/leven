@@ -28,11 +28,12 @@ ThreadPool::~ThreadPool()
 void ThreadPool::stop()
 {
     assert(running_);
+    // make sure running_ is set to false so that threads are join-able
     running_ = false;
     // make use of std::lock_guard; automatic mutex_ management
     {
         std::lock_guard<std::mutex> guard(mutex_);
-        nonEmpty_.notify_all();
+        nonEmpty_.notify_all();  // wake up threads that is waiting for empty condition
     }
     for (auto& thread: threads_) {
         thread->join();
@@ -60,7 +61,7 @@ void ThreadPool::runTask(Task&& task)
 {
     assert(running_);
 
-    if (threads_.empty()) {
+    if (threads_.empty()) {  // if there's no threads in the pool
         task();
     } else {
         std::unique_lock<std::mutex> lock(mutex_);
@@ -89,6 +90,7 @@ Task ThreadPool::takeTask()
 {
     std::unique_lock<std::mutex> lock(mutex_);
     while (taskQueue_.empty() && running_)
+        // wait for task queue to be not empty
         nonEmpty_.wait(lock);
 
     Task task;
