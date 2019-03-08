@@ -4,8 +4,8 @@ set(SOURCE_FILES
         InetAddress.cc InetAddress.h
         Connector.cc Connector.h
         Logger.c Logger.h
-        ThreadPool.cc ThreadPool.h
-        Buffer.cc Buffer.h
+        util/ThreadPool.cc util/ThreadPool.h
+        util/Buffer.cc util/Buffer.h
         Channel.cc Channel.h
         EventLoop.cc EventLoop.h
         Epoller.cc Epoller.h
