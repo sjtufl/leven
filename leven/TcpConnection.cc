@@ -23,7 +23,7 @@ void defaultThreadInitCallback(size_t index)
     TRACE("EventLoop thread #%lu started", index);
 }
 
-void defaultConnectionCallback(const TcpConnectionPtr& conn)
+void defaultConnectionCallback(const TcpConnPtr& conn)
 {
     INFO("connection %s -> %s %s",
          conn->peer().toIpPort().c_str(),
@@ -31,7 +31,7 @@ void defaultConnectionCallback(const TcpConnectionPtr& conn)
          conn->connected() ? "up" : "down");
 }
 
-void defaultMessageCallback(const TcpConnectionPtr& conn, Buffer& buffer)
+void defaultMessageCallback(const TcpConnPtr& conn, Buffer& buffer)
 {
     TRACE("connection %s -> %s recv %lu bytes",
           conn->peer().toIpPort().c_str(),
@@ -53,10 +53,10 @@ TcpConnection::TcpConnection(EventLoop *loop, int sockfd,
           peer_(peer),
           highWaterMark_(0)
 {
-    channel_.setReadCallback([this](){handleRead();});
-    channel_.setWriteCallback([this](){handleWrite();});
-    channel_.setCloseCallback([this](){handleClose();});
-    channel_.setErrorCallback([this](){handleError();});
+    channel_.setReadCallBack([this](){handleRead();});
+    channel_.setWriteCallBack([this](){handleWrite();});
+    channel_.setCloseCallBack([this](){handleClose();});
+    channel_.setErrorCallBack([this](){handleError();});
 
     TRACE("TcpConnection() %s fd=%d", name().c_str(), sockfd);
 }

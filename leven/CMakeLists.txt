@@ -9,7 +9,7 @@ set(SOURCE_FILES
         Channel.cc Channel.h
         EventLoop.cc EventLoop.h
         Epoller.cc Epoller.h
-#        TcpConnection.cc TcpConnection.h
+        TcpConnection.cc TcpConnection.h
         Callbacks.h
         )
 
@@ -26,7 +26,7 @@ set(HEADERS
         Callbacks.h
         ThreadPool.h
         Buffer.h
-#        TcpConnection.h
+        TcpConnection.h
         Channel.h
         EventLoop.h
         )

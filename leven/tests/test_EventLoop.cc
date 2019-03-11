@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <thread>
 
 #include <leven/EventLoop.h>
 

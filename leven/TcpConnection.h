@@ -4,7 +4,7 @@
 #include <any>
 
 #include <leven/noncopyable.h>
-#include <leven/Buffer.h>
+#include <leven/util/Buffer.h>
 #include <leven/Callbacks.h>
 #include <leven/Channel.h>
 #include <leven/InetAddress.h>
@@ -27,7 +27,7 @@ public:
     { messageCallback_ = cb; }
     void setWriteCompleteCallback(const WriteCompleteCallback& cb)
     { writeCompleteCallback_ = cb; }
-    void setHighWaterMarkCallback(const HighWaterMarkCallback& cb, size_t mark)
+    void setHighWaterMarkCallback(const HighWatermarkCallback& cb, size_t mark)
     { highWaterMarkCallback_ = cb; highWaterMark_ = mark; }
 
     // internal use
@@ -95,7 +95,7 @@ private:
     std::any context_;
     MessageCallback messageCallback_;
     WriteCompleteCallback writeCompleteCallback_;
-    HighWaterMarkCallback highWaterMarkCallback_;
+    HighWatermarkCallback highWaterMarkCallback_;
     CloseCallback closeCallback_;
 };
 

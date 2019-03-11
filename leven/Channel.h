@@ -72,6 +72,8 @@ public:
     bool isReading() const { return events_ & EPOLLIN; }
     bool isWriting() const { return events_ & EPOLLOUT;}
 
+    void tie(const std::shared_ptr<void>& obj);
+
 private:
     void update();
     void remove();
@@ -83,6 +85,9 @@ private:
 
     unsigned events_;
     unsigned revents_; // active events currently
+
+    std::weak_ptr<void> tiedObjPtr_;
+    bool tied_;
 
     bool handlingEvents_;
 

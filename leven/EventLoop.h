@@ -25,7 +25,7 @@ pid_t gettid()
     return static_cast<pid_t>(::syscall(SYS_gettid));
 }
 
-}
+} // namespace
 
 namespace leven
 {
@@ -78,6 +78,6 @@ private:
 };
 
 
-}
+} // namespace leven
 
 #endif //LEVEN_EVENTLOOP_H

@@ -14,6 +14,7 @@ Channel::Channel(leven::EventLoop *loop, int fd)
           fd_(fd),
           events_(0),
           revents_(0),
+          tied_(false),
           handlingEvents_(false)
         {}
 
@@ -46,6 +47,12 @@ void Channel::handleEventsWithGuard() {
 
 void Channel::update() {
     loop_->updateChannel(this);
+}
+
+void Channel::tie(const std::shared_ptr<void>& obj)
+{
+    tiedObjPtr_ = obj;
+    tied_ = true;
 }
 
 void Channel::remove() {
