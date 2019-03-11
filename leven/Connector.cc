@@ -3,7 +3,7 @@
 #include <assert.h>
 
 #include <leven/Connector.h>
-#include <leven/Logger.h>
+#include <leven/util/Logger.h>
 #include <leven/InetAddress.h>
 
 using namespace leven;

@@ -4,7 +4,7 @@
 //#include <assert.h>
 //#include <netdb.h>
 
-#include <leven/Logger.h>
+#include <leven/util/Logger.h>
 #include <leven/InetAddress.h>
 
 using namespace leven;

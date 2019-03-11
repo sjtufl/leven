@@ -5,7 +5,7 @@
 #include <assert.h>
 
 #include <leven/InetAddress.h>
-#include <leven/Logger.h>
+#include <leven/util/Logger.h>
 #include <leven/Acceptor.h>
 
 using namespace leven;

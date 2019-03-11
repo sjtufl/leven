@@ -9,7 +9,7 @@
 #include <sys/types.h> // pid_t
 
 #include <leven/EventLoop.h>
-#include <leven/Logger.h>
+#include <leven/util/Logger.h>
 #include <leven/Channel.h>
 
 using namespace leven;

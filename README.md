@@ -2,7 +2,7 @@
 
 Leven is a light-weight C++ network library.
 
-$Todo$
+**Todo**
 
 - [ ] Threaded Eventloop
 - [ ] TCP Server && Client

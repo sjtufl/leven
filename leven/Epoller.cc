@@ -8,7 +8,7 @@
 
 #include <leven/EventLoop.h>
 #include <leven/Epoller.h>
-#include <leven/Logger.h>
+#include <leven/util/Logger.h>
 #include <cerrno>
 
 using namespace leven;

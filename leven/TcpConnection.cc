@@ -1,7 +1,7 @@
 #include <cassert>
 #include <unistd.h>
 
-#include <leven/Logger.h>
+#include <leven/util/Logger.h>
 #include <leven/EventLoop.h>
 #include <leven/TcpConnection.h>
 
