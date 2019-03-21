@@ -1,7 +1,7 @@
 #include <cassert>
 
-#include <leven/ThreadPool.h>
-#include <leven/Logger.h>
+#include <leven/util/ThreadPool.h>
+#include <leven/util/Logger.h>
 
 using namespace leven;
 

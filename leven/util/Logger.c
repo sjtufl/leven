@@ -7,7 +7,7 @@
 #include <errno.h>
 #include <sys/time.h>
 
-#include <leven/Logger.h>
+#include <leven/util/Logger.h>
 
 #define MAXLINE     256
 
