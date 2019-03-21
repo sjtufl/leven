@@ -3,7 +3,7 @@
 //
 #include <iostream>
 
-#include <leven/ThreadPool.h>
+#include <leven/util/ThreadPool.h>
 
 
 using namespace leven;

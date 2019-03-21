@@ -42,7 +42,7 @@ public:
     bool canceled() const { return canceled_; }
 
 private:
-    TimerCallback callback_;
+    TimerCallBack callback_;
     Timestamp when_;
     const Nanosecond interval_;
     bool repeat_;

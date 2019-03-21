@@ -3,13 +3,15 @@ set(SOURCE_FILES
         Acceptor.cc Acceptor.h
         InetAddress.cc InetAddress.h
         Connector.cc Connector.h
-        Logger.c Logger.h
+        util/Logger.c util/Logger.h
         util/ThreadPool.cc util/ThreadPool.h
         util/Buffer.cc util/Buffer.h
         Channel.cc Channel.h
         EventLoop.cc EventLoop.h
         Epoller.cc Epoller.h
         TcpConnection.cc TcpConnection.h
+        Timer.h
+        TimerQueue.h TimerQueue.cc
         Callbacks.h
         )
 
@@ -29,5 +31,7 @@ set(HEADERS
         TcpConnection.h
         Channel.h
         EventLoop.h
+        TimerQueue.h
+        Timer.h
         )
 install(FILES ${HEADERS} DESTINATION include)

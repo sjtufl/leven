@@ -12,7 +12,7 @@
 #include <cerrno>
 #include <sys/uio.h>
 
-#include <leven/Buffer.h>
+#include <leven/util/Buffer.h>
 
 using namespace leven;
 

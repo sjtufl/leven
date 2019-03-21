@@ -8,13 +8,15 @@
 #include <unistd.h> // ::syscall
 #include <sys/types.h> // pid_t
 #include <cassert>
-
+#include <mutex>
 #include <atomic>
 
 #include <leven/noncopyable.h>
 #include <leven/Epoller.h>
 #include <leven/Callbacks.h>
-#include <mutex>
+#include <leven/Timer.h>
+#include <leven/TimerQueue.h>
+
 
 
 namespace
@@ -46,6 +48,13 @@ public:
     void queueInLoop(const Task& task);
     void queueInLoop(Task&& task);
 
+    Timer* runAt(Timestamp when, TimerCallBack cb);
+    Timer* runAfter(Nanosecond interval, TimerCallBack cb);
+    Timer* runEvery(Nanosecond interval, TimerCallBack cb);
+    void cancelTimer(Timer* timer);
+
+    void wakeup();
+
     void updateChannel(Channel* channel);
     void removeChannel(Channel* channel);
 
@@ -75,6 +84,10 @@ private:
     bool doingPendingJobs_; // status
     std::atomic_bool quit_; // thread safe
     const pid_t threadId_;  // id of loop thread
+
+    TimerQueue timerQueue_;
+    const int wakeupfd_;
+    Channel wakeupChl_;
 };
 
 
