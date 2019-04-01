@@ -13,6 +13,7 @@ set(SOURCE_FILES
         Timer.h
         TimerQueue.h TimerQueue.cc
         Callbacks.h
+        TcpServer.h TcpServer.cc
         )
 
 add_library(leven STATIC ${SOURCE_FILES})
@@ -33,5 +34,6 @@ set(HEADERS
         EventLoop.h
         TimerQueue.h
         Timer.h
+        TcpServer.h
         )
 install(FILES ${HEADERS} DESTINATION include)

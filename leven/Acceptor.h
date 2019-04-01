@@ -7,7 +7,8 @@
 
 #include <leven/noncopyable.h>
 #include <leven/InetAddress.h>
-#include "Callbacks.h"
+#include <leven/Channel.h>
+#include <leven/Callbacks.h>
 
 namespace leven
 {
@@ -15,7 +16,7 @@ namespace leven
 class Acceptor: noncopyable
 {
 public:
-    Acceptor(const InetAddress& local);
+    Acceptor(EventLoop *loop, const InetAddress& local);
     ~Acceptor();
 
     bool listning() const {
@@ -30,8 +31,12 @@ public:
     }
 
 private:
+    void handleRead();
+
     bool listening_;
+    EventLoop *loop_;
     const int acceptFd_;
+    Channel acceptChannel_;
     InetAddress local_;
     NewConnectionCallBack newConnectionCallBack_;
 };

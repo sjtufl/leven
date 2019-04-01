@@ -28,6 +28,7 @@ typedef std::function<void()> TimerCallBack;
 typedef std::shared_ptr<TcpConnection> TcpConnPtr;
 typedef std::function<void(const TcpConnPtr&, Buffer&)> MessageCallback;
 typedef std::function<void(const TcpConnPtr&)> CloseCallback;
+typedef std::function<void(const TcpConnPtr&)> ConnectionCallback;
 typedef std::function<void(const TcpConnPtr&)> WriteCompleteCallback;
 typedef std::function<void(const TcpConnPtr&, size_t)> HighWatermarkCallback;
 
