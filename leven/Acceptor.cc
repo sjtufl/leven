@@ -35,6 +35,10 @@ Acceptor::Acceptor(EventLoop *loop, const leven::InetAddress &local)
     int ret = ::setsockopt(acceptFd_, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
     if (ret == -1)
         SYSFATAL("Acceptor::setsockopt() SO_REUSEADDR");
+
+    // Set socket SO_REUSEPORT so that every thread could hold an acceptor
+    // don't need to worry about load balancing
+    // cuz kernel will assign TCP connection to threads(acceptors) averagely
     ret = ::setsockopt(acceptFd_, SOL_SOCKET, SO_REUSEPORT, &on, sizeof(on));
     if (ret == -1)
         SYSFATAL("Acceptor::setsockopt() SO_REUSEPORT");
@@ -70,7 +74,7 @@ void Acceptor::handleRead() {
         int tmpErrno = errno;
         SYSERR("Acceptor::accept4()");
         switch (tmpErrno) {
-            case ECONNABORTED;
+            case ECONNABORTED:
             case EMFILE:
                 break;
             default:

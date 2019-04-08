@@ -65,6 +65,8 @@ void EventLoop::quit()
     assert(!quit_);
     quit_ = true;
     // fixme: wakeup?
+    if (!isInLoopThread())
+        wakeup();
 }
 
 void EventLoop::runInLoop(const leven::Task &task)
@@ -93,6 +95,8 @@ void EventLoop::queueInLoop(const leven::Task &task)
     }
 
     // fixme: if doing pending jobs or not in loop thread, wakeup?
+    if (!isInLoopThread() || doingPendingJobs_)
+        wakeup();
 }
 
 void EventLoop::queueInLoop(leven::Task &&task)
@@ -103,6 +107,8 @@ void EventLoop::queueInLoop(leven::Task &&task)
     }
 
     // fixme: same as above
+    if (!isInLoopThread() || doingPendingJobs_)
+        wakeup();
 }
 
 Timer* EventLoop::runAt(leven::Timestamp when, leven::TimerCallBack cb) {

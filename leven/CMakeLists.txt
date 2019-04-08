@@ -14,6 +14,7 @@ set(SOURCE_FILES
         TimerQueue.h TimerQueue.cc
         Callbacks.h
         TcpServer.h TcpServer.cc
+        TcpServerThreaded.h TcpServerThreaded.cc
         )
 
 add_library(leven STATIC ${SOURCE_FILES})
@@ -35,5 +36,6 @@ set(HEADERS
         TimerQueue.h
         Timer.h
         TcpServer.h
+        TcpServerThreaded.h
         )
 install(FILES ${HEADERS} DESTINATION include)

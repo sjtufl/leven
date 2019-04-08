@@ -18,28 +18,6 @@ enum ConnectionState
     kDisconnected
 };
 
-void defaultThreadInitCallback(size_t index)
-{
-    TRACE("EventLoop thread #%lu started", index);
-}
-
-void defaultConnectionCallback(const TcpConnPtr& conn)
-{
-    INFO("connection %s -> %s %s",
-         conn->peer().toIpPort().c_str(),
-         conn->local().toIpPort().c_str(),
-         conn->connected() ? "up" : "down");
-}
-
-void defaultMessageCallback(const TcpConnPtr& conn, Buffer& buffer)
-{
-    TRACE("connection %s -> %s recv %lu bytes",
-          conn->peer().toIpPort().c_str(),
-          conn->local().toIpPort().c_str(),
-          buffer.readableBytes());
-    buffer.retrieveAll();
-}
-
 }
 
 TcpConnection::TcpConnection(EventLoop *loop, int sockfd,
